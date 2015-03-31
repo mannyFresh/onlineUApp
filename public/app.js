@@ -1,0 +1,1 @@
+angular.module('onlineUApp', ['ngRoute', 'appRoutes', 'OnlineUniversityController']);
