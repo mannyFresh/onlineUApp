@@ -46,7 +46,6 @@ app.post('/api/course', function (req, res) {
 
 app.delete('/api/course/:index', function (req, res) {
   // removes course at index and returns all remaining courses
-  //$scope.courses.splice(index, 1);
   var index = req.params.index;
   courses.splice(index, 1);
   res.json(courses);
@@ -67,9 +66,10 @@ app.put('/api/course/:index', function (req, res) {
 
   res.json(courses);
 
-  //$scope.courses[$scope.courseIndex] = updatedCourse;
 });
 
 // listen
-app.listen(8080);
-console.log("App listening on port " + 8080);
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+
+app.listen(port, ipaddress);
